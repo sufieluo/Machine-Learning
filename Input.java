@@ -34,7 +34,7 @@ public class Input {
 	        File file_labelOne=new File(path);
 	      
 	        if(!file_labelOne.exists())
-	        	System.err.println("ÎÄ¼ş²»´æÔÚ");
+	        	System.err.println("æ–‡ä»¶ä¸å­˜åœ¨");
 	      
 	    	try {
 	    			BufferedReader br=new BufferedReader(new FileReader(file_labelOne)); 
