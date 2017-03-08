@@ -31,13 +31,13 @@ public class Input {
 	
 	public static void input(){
 	
-			String path="C:\\Users\\dell\\Desktop\\test.txt";
-			String tempString = null;
+		String path="C:\\Users\\dell\\Desktop\\test.txt";
+		String tempString = null;
 	        File file_labelOne=new File(path);
 	      
 	        
 	        if(!file_labelOne.exists())
-	        	System.err.println("ÎÄ¼þ²»´æÔÚ");
+	        	System.err.println("ÃŽÃ„Â¼Ã¾Â²Â»Â´Ã¦Ã”Ãš");
 	      
 	    	try {
 	    			BufferedReader br1=new BufferedReader(new FileReader(file_labelOne)); 
