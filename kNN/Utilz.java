@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Utilz {
 	
-	//计算数据第dimention维的方差大小
+	//璁＄畻鏁版嵁绗琩imention缁寸殑鏂瑰樊澶у皬
 	public static double variance(ArrayList<ArrayList<Integer>> data,int dimention){
         double vsum = 0;
         double sum = 0;
