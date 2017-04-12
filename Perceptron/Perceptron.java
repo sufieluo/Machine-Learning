@@ -1,19 +1,19 @@
 public class Perceptron {
-	//È¨ÖØ
+	//æƒé‡
 	public static double [][] w = new double [2][1];
-	//Æ«ÖÃ
+	//åç½®
 	public static double b = 0;
-	//Ñ§Ï°ÂÊ
+	//å­¦ä¹ ç‡
 	public static double rate = 1;
-	//Êı¾İ¼¯£¬µÚÈıĞĞ´ú±íÀàĞÍ
+	//æ•°æ®é›†ï¼Œç¬¬ä¸‰è¡Œä»£è¡¨ç±»å‹
 	public static double [][] data = Input.getLabel_one();
-	//Êı¾İ¼¯´óĞ¡
+	//æ•°æ®é›†å¤§å°
 	public static int data_size = Input.getLabelOneSize();
-	//µü´ú´ÎÊı
+	//è¿­ä»£æ¬¡æ•°
 	public static int diedainum = 0;
 	
 	public static void output() {
-		System.out.println("\n"+"µü´ú´ÎÊı£º"+ diedainum);
+		System.out.println("\n"+"è¿­ä»£æ¬¡æ•°ï¼š"+ diedainum);
 		System.out.println("w:("+w[0][0]+","+w[1][0]+")");
 		System.out.println("b:"+b);
 	}
@@ -29,7 +29,7 @@ public class Perceptron {
 			}
 			else {
 				updateWeight(i);
-				System.out.println("Îó·Öµã£ºx"+(i+1));
+				System.out.println("è¯¯åˆ†ç‚¹ï¼šx"+(i+1));
 				jisuan();
 				
 			}
@@ -41,7 +41,7 @@ public class Perceptron {
 		w[0][0] = w[0][0] + rate * data[2][index] *data[0][index];
 		w[1][0] = w[1][0] + rate * data[2][index] *data[1][index];
 		b = b + data[2][index];
-		System.out.println("µü´ú´ÎÊı£º"+ diedainum);
+		System.out.println("è¿­ä»£æ¬¡æ•°ï¼š"+ diedainum);
 		System.out.println("w:("+w[0][0]+","+w[1][0]+")");
 		System.out.println("b:"+b);
 	}
