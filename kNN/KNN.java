@@ -6,7 +6,7 @@ public class KNN {
 	public int input[][] = new int[0][1];
 	public int nearestIndex = -1;
 	public double bestDistance = 100000;
-	//public int k = 3;//k½üÁÚ
+	//public int k = 3;//kè¿‘é‚»
 	public Stack<Node> sNodes = new Stack<Node>();//
 	
 	public  KNN() {
@@ -34,10 +34,10 @@ public class KNN {
 		setInput(input);
 		findCurrentNearest(tree.getRoot()); 
 		getNearest();
-		System.out.println("×î½üÁÚ£º" + nearestIndex + " ¾àÀë£º" + bestDistance);
+		System.out.println("æœ€è¿‘é‚»ï¼š" + nearestIndex + " è·ç¦»ï¼š" + bestDistance);
 	}
 	
-	//»ØËİÕÒ×î½üÁÚ
+	//å›æº¯æ‰¾æœ€è¿‘é‚»
 	private void getNearest() {
 		
 		while(!sNodes.isEmpty()) {
@@ -50,7 +50,7 @@ public class KNN {
 				}
 				
 			}
-			//ÅĞ¶ÏÊÇ·ñÓë¾ØĞÎÇøÓòÓĞÏà½»
+			//åˆ¤æ–­æ˜¯å¦ä¸çŸ©å½¢åŒºåŸŸæœ‰ç›¸äº¤
 			else  if (Math.abs(input[0][tempNode.getPartitionDimention()] 
 			                            - kdTree.init_data.get(tempNode.getIndex()).get(tempNode.getPartitionDimention()))
 			                            < bestDistance) {
@@ -60,14 +60,14 @@ public class KNN {
 					bestDistance = tempDistance;
 				}
 				if (input[0][tempNode.getPartitionDimention()] < kdTree.init_data.get(tempNode.getIndex()).get(tempNode.getPartitionDimention())) {
-					//Èç¹û½øÈë×ó½Úµã£¬ÄÇ¾Í°ÑÓÒ½ÚµãÑ¹Õ»
+					//å¦‚æœè¿›å…¥å·¦èŠ‚ç‚¹ï¼Œé‚£å°±æŠŠå³èŠ‚ç‚¹å‹æ ˆ
 					if (tempNode.getRightNode() != null) {
 						sNodes.push(tempNode.getRightNode());
 					}
 					
 				}
 				else {
-					//Èç¹û½øÈëÓÒ½Úµã£¬ÄÇ¾Í°Ñ×ó½ÚµãÑ¹Õ»
+					//å¦‚æœè¿›å…¥å³èŠ‚ç‚¹ï¼Œé‚£å°±æŠŠå·¦èŠ‚ç‚¹å‹æ ˆ
 					if (tempNode.getLeftNode() != null) {
 						sNodes.push(tempNode.getLeftNode());
 					}
@@ -79,7 +79,7 @@ public class KNN {
 		}
 			
 	}
-	//£¨´À°ì·¨£¬Ã»ÀûÓÃµ½kdÊ÷µÄÌØĞÔ£©Ç°Ğò±éÀúkdÊ÷£¬±ß±éÀú±ß¼ÆËã¾àÀë£¬Çó³ö×î½üÁÚ
+	//ï¼ˆè ¢åŠæ³•ï¼Œæ²¡åˆ©ç”¨åˆ°kdæ ‘çš„ç‰¹æ€§ï¼‰å‰åºéå†kdæ ‘ï¼Œè¾¹éå†è¾¹è®¡ç®—è·ç¦»ï¼Œæ±‚å‡ºæœ€è¿‘é‚»
 //	private void getNearest(Node node) {
 //		if(node != null){
 //			if (getDistance(node) < bestDistance) {
@@ -93,15 +93,15 @@ public class KNN {
 //		return;
 //	}
 
-	//ÕÒ³õÊ¼µÄ×î½üÁÚ
+	//æ‰¾åˆå§‹çš„æœ€è¿‘é‚»
 	public void findCurrentNearest(Node node) {
 		if (node.isLeaf()) {
 			nearestIndex =  node.getIndex();
 			bestDistance = getDistance(node);
-			System.out.println("³õÊ¼×î½üµÄµã£º"+nearestIndex);
+			System.out.println("åˆå§‹æœ€è¿‘çš„ç‚¹ï¼š"+nearestIndex);
 			return;
 		}
-		//·Ö¸îµÄÎ¬¶È
+		//åˆ†å‰²çš„ç»´åº¦
 		int partitionDimention = node.getPartitionDimention();
 		sNodes.push(node);
 		if (input[0][partitionDimention] < kdTree.init_data.get(node.getIndex()).get(partitionDimention)) {
@@ -111,7 +111,7 @@ public class KNN {
 			else {
 				nearestIndex =  node.getIndex();
 				bestDistance = getDistance(node);
-				System.out.println("³õÊ¼×î½üµÄµã£º"+nearestIndex);
+				System.out.println("åˆå§‹æœ€è¿‘çš„ç‚¹ï¼š"+nearestIndex);
 				return;
 			}
 		}
@@ -122,7 +122,7 @@ public class KNN {
 			else {
 				nearestIndex =  node.getIndex();
 				bestDistance = getDistance(node);
-				System.out.println("³õÊ¼×î½üµÄµã£º"+nearestIndex);
+				System.out.println("åˆå§‹æœ€è¿‘çš„ç‚¹ï¼š"+nearestIndex);
 				return;
 			}
 			
@@ -131,7 +131,7 @@ public class KNN {
 		findCurrentNearest(node);
 	}
 
-	//¼ÆËãÊäÈëµãÓëµÚindexµÄµãÖ®¼äµÄÅ·ÊÏ¾àÀë
+	//è®¡ç®—è¾“å…¥ç‚¹ä¸ç¬¬indexçš„ç‚¹ä¹‹é—´çš„æ¬§æ°è·ç¦»
 	public double getDistance(Node node) {        
 		double d = Math.pow(Math.abs(input[0][0]-kdTree.init_data.get(node.getIndex()).get(0)),2)+
 						  Math.pow(Math.abs(input[0][1]-kdTree.init_data.get(node.getIndex()).get(1)), 2);
