@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class kdTree {
-	public Node root = new Node();//¸ù½Úµã
+	public Node root = new Node();//æ ¹èŠ‚ç‚¹
 	public static HashMap<Integer, ArrayList<Integer>> init_data= new HashMap<Integer, ArrayList<Integer>>();
 	
-	static int dimention = 2; 	//Î¬¶È
+	static int dimention = 2; 	//ç»´åº¦
 
 	public kdTree(){
 		
@@ -48,7 +48,7 @@ public class kdTree {
 			return;
 		}
 		
-		//ÕÒµ½·½²î×î´óµÄÎ¬¶È½øĞĞ·Ö¸î
+		//æ‰¾åˆ°æ–¹å·®æœ€å¤§çš„ç»´åº¦è¿›è¡Œåˆ†å‰²
 		node.setPartitionDimention(-1);
         double var = -1;
         double tmpvar;
@@ -60,14 +60,14 @@ public class kdTree {
             }
         }
            	
-        //Ö»Ê£ÏÂÒ»¸öÊı¾İ£¬ËµÃ÷µ½ÁËÒ¶×Ó½Úµã
+        //åªå‰©ä¸‹ä¸€ä¸ªæ•°æ®ï¼Œè¯´æ˜åˆ°äº†å¶å­èŠ‚ç‚¹
     	if (data.size() == 1 ) {
 			node.setLeaf(true);
 			for (Entry<Integer, ArrayList<Integer>> e : init_data.entrySet()) {
 				if (e.getValue().equals(data.get(0))) {
 					node.setIndex(e.getKey());
 					node.setParentIndex(parentIndex);
-					System.out.println("³õÊ¼Î»ÖÃ£º"+node.getIndex()+"Î³¶È£º"+node.getPartitionDimention());
+					System.out.println("åˆå§‹ä½ç½®ï¼š"+node.getIndex()+"çº¬åº¦ï¼š"+node.getPartitionDimention());
 					break;
 				}
 			}
@@ -75,14 +75,14 @@ public class kdTree {
 		}
     	
     	
-    	//ÕÒµ½aixsÎ¬¶ÈµÄÖĞÎ»ÊıËùÔÚdataÖĞµÄÏÂ±ê
+    	//æ‰¾åˆ°aixsç»´åº¦çš„ä¸­ä½æ•°æ‰€åœ¨dataä¸­çš„ä¸‹æ ‡
 		int index = findMid(data, node.getPartitionDimention());
 		
 		for (Entry<Integer, ArrayList<Integer>> e : init_data.entrySet()) {
 			if (e.getValue().equals(data.get(index))) {
 				node.setIndex(e.getKey());
 				node.setParentIndex(parentIndex);
-				System.out.println("³õÊ¼Î»ÖÃ£º"+node.getIndex()+"Î³¶È£º"+node.getPartitionDimention());
+				System.out.println("åˆå§‹ä½ç½®ï¼š"+node.getIndex()+"çº¬åº¦ï¼š"+node.getPartitionDimention());
 				break;
 			}
 		}
@@ -99,13 +99,13 @@ public class kdTree {
 				rightIndex.add(i);
 			}		
 		}
-		//ÕÒ³ö×ó×Ó¼¯
+		//æ‰¾å‡ºå·¦å­é›†
 		
 		ArrayList<ArrayList<Integer>> left_data = findLeftData(data,leftIndex);
-		//ÕÒ³öÓÒ×Ó¼¯
+		//æ‰¾å‡ºå³å­é›†
 		ArrayList<ArrayList<Integer>> right_data = findRightData(data,rightIndex);
 	
-		//++depth¼ÓÁËÖ®ºóÔÙ´«
+		//++depthåŠ äº†ä¹‹åå†ä¼ 
 		createTree(node.getLeftNode(),left_data,node.getIndex());
 		createTree(node.getRightNode(),right_data,node.getIndex());
 		
@@ -113,7 +113,7 @@ public class kdTree {
 	
 	public static ArrayList<ArrayList<Integer>> findLeftData(ArrayList<ArrayList<Integer>> data,ArrayList<Integer> leftIndex) {
 		ArrayList<ArrayList<Integer>> left_data = new ArrayList<ArrayList<Integer>>();
-		//ÕÒ³ö×ó×Ó¼¯
+		//æ‰¾å‡ºå·¦å­é›†
 		for (int i = 0; i < leftIndex.size(); i++) {
 			ArrayList<Integer> arrayList = new ArrayList<Integer>();
 			for (int j = 0; j < data.get(i).size(); j++) {
@@ -126,7 +126,7 @@ public class kdTree {
 	
 	public static ArrayList<ArrayList<Integer>> findRightData(ArrayList<ArrayList<Integer>> data,ArrayList<Integer> rightIndex) {
 		ArrayList<ArrayList<Integer>> right_data = new ArrayList<ArrayList<Integer>>();
-		//ÕÒ³öÓÒ×Ó¼¯
+		//æ‰¾å‡ºå³å­é›†
 		for (int i = 0; i < rightIndex.size(); i++) {
 			ArrayList<Integer> arrayList = new ArrayList<Integer>();
 			for (int j = 0; j < data.get(i).size(); j++) {
@@ -138,7 +138,7 @@ public class kdTree {
 		return right_data;
 	}
 
-	//ÕÒµ½×îÖĞ¼äµÄÊı¾İ,·µ»ØÊı¾İÏÂ±ê
+	//æ‰¾åˆ°æœ€ä¸­é—´çš„æ•°æ®,è¿”å›æ•°æ®ä¸‹æ ‡
 	public static int findMid(ArrayList<ArrayList<Integer>> data,int aixs) {
 		int data_of_aixs[] = new int[data.size()]; 
 		HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
@@ -148,9 +148,9 @@ public class kdTree {
 			map.put(i,data_of_aixs[i]);
 		}
 		Arrays.sort(data_of_aixs);
-		//ÅÅĞòºóËã³öÖĞÎ»Êı
+		//æ’åºåç®—å‡ºä¸­ä½æ•°
 		int mid_data_of_aixs = data_of_aixs[data_of_aixs.length/2];
-		//·µ»ØÖĞÎ»Êı¶ÔÓ¦µÄdataÖĞµÄÏÂ±ê
+		//è¿”å›ä¸­ä½æ•°å¯¹åº”çš„dataä¸­çš„ä¸‹æ ‡
 		int index = 0;
 		for (Entry<Integer, Integer> e : map.entrySet()) {
 			if (e.getValue().equals(mid_data_of_aixs)) {
@@ -158,7 +158,7 @@ public class kdTree {
 				break;
 			}
 		}
-		System.out.println("¸ù£º"+mid_data_of_aixs+"Î¬¶È£º"+aixs);
+		System.out.println("æ ¹ï¼š"+mid_data_of_aixs+"ç»´åº¦ï¼š"+aixs);
 		
 		return index;
 	}
