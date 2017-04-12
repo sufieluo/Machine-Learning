@@ -3,10 +3,10 @@
 public  class  Node{
 	
 	private int index = -1;
-	private Node leftNode = null;//×óº¢×Ó
-	private Node rightNode = null;//ÓÒº¢×Ó
-	private int partitionDimention = 0;//·Ö¸îµÄÎ¬¶È
-	private boolean isLeaf = false;//ÊÇ·ñÎªÒ¶×Ó½Úµã
+	private Node leftNode = null;//å·¦å­©å­
+	private Node rightNode = null;//å³å­©å­
+	private int partitionDimention = 0;//åˆ†å‰²çš„ç»´åº¦
+	private boolean isLeaf = false;//æ˜¯å¦ä¸ºå¶å­èŠ‚ç‚¹
 	private int parentIndex = -1;
 
 	
